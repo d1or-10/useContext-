@@ -1,9 +1,24 @@
-
-import React, { useContext } from "react";
-import { ProductContext } from "../App";
+import React from "react";
+import useProducts from "../hooks/useProducts";
 
 function UserList() {
-  const products = useContext(ProductContext);
+  const { products, loading, error } = useProducts();
+
+  if (loading) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-[#0B0B14] text-xl font-bold text-purple-400">
+        Loading products...
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-[#0B0B14] text-red-400">
+        {error}
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-[#0B0B14] px-6 py-12 text-white">
@@ -18,11 +33,11 @@ function UserList() {
         </h1>
 
         <p className="mt-4 max-w-xl text-gray-400">
-          Explore our premium collection of products designed
-          to make your everyday life better.
+          Explore our premium collection of products designed to make your
+          everyday life better.
         </p>
 
-        <div className="mt-6 h-1 w-20 rounded-full bg-gradient-to- from-purple-500 to-pink-500" />
+        <div className="mt-6 h-1 w-20 rounded-full bg-gradient-to-r from-purple-500 to-pink-500" />
       </div>
 
       {/* Products Grid */}
@@ -56,9 +71,7 @@ function UserList() {
 
               <div className="mt-5 flex items-center justify-between">
                 <div>
-                  <p className="text-xs text-gray-500">
-                    Price
-                  </p>
+                  <p className="text-xs text-gray-500">Price</p>
 
                   <p className="mt-1 text-2xl font-bold text-purple-400">
                     ${product.price}
@@ -79,7 +92,8 @@ function UserList() {
 
       {/* Footer */}
       <div className="mx-auto mt-16 max-w-7xl border-t border-white/10 pt-6 text-center text-sm text-gray-500">
-        Crafted with <span className="text-purple-500">♥</span> for your lifestyle
+        Crafted with <span className="text-purple-500">♥</span> for your
+        lifestyle
       </div>
     </div>
   );

@@ -37,7 +37,7 @@ function UserList() {
           everyday life better.
         </p>
 
-        <div className="mt-6 h-1 w-20 rounded-full bg-gradient-to-r from-purple-500 to-pink-500" />
+        <div className="mt-6 h-1 w-20 rounded-full bg-gradient-to- from-purple-500 to-pink-500" />
       </div>
 
       {/* Products Grid */}
